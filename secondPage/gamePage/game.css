@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    justify-content: center;
+    background-color: pink;
+}
+#board {
+    margin-top: 23%;
+    border-radius: 15px;
+    box-shadow: 0px 0px 40px rgb(248, 112, 135)
+}
+@keyframes purple {
+    50% {background-color: rgb(250, 146, 163)}
+    100% {background-color: pink;}
+}
+#pinkPanther {
+    mix-blend-mode: multiply;
+    position: absolute;
+    top: 30%;
+    left: -68%;
+    z-index: -1;
+    display: none;
+}
+#main {
+    position: relative;
+}
