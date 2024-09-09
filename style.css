@@ -1,0 +1,94 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+main {
+  margin-top: 4%;
+}
+header {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  background: linear-gradient(rgb(230, 64, 163), rgb(252, 202, 210));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  font-family: Georgia;
+  margin-top: 3%;;
+}
+#mainText {
+  max-width: 300px;
+  display: inline-block;
+  font-size: 25px;
+  position: absolute;
+  top: 80px;
+  right: 80px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+#mainText >div {
+    margin-bottom: 50px;
+    background: linear-gradient(90deg,rgb(230, 64, 163), rgb(250, 124, 145) ,rgb(230, 64, 163));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#mainBox {
+  border: 4px solid pink;
+  background-image: linear-gradient(rgb(255, 237, 240), white);
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px rgb(248, 107, 130);
+  width: 700px;
+  height: 400px;
+  margin-top: 5%;
+  position: relative;
+}
+
+img {
+  margin-left: 4%;
+}
+a {
+  text-decoration: none;
+}
+#mainBox  a {
+  font-size: 35px;
+  color: rgb(255, 107, 132);
+  font-weight: 600;
+  margin-top: 100px;
+  animation-name: changeColor;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+@keyframes changeColor {
+    50% {opacity: 0.5}
+}
+#mainBox a:hover {
+    color: rgb(228, 123, 186);
+    animation: none;
+}
+footer {
+    position: absolute;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    bottom: 0;
+    width: 100%;
+    height: 13%;
+    background:linear-gradient(white , rgb(252, 178, 191));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(230, 64, 163);
+    border-top: 6px solid pink;
+}
+footer a {
+    color: rgb(230, 64, 163);
+}
+footer a:last-of-type {
+    margin-right: 4%;
+}
+footer div:first-of-type {
+    margin-left: 4%;
+}
