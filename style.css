@@ -4,6 +4,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-image: url(docs/photo_2024-09-09_23-58-25\ \(2\).jpg);
 }
 main {
   margin-top: 4%;
