@@ -1,15 +1,17 @@
-// main board
-let blockSize = 25;
+//main board
+let blockSize = 30;
 let rows = 20;
-let cols = 20;
+let columns = 20;
 let board;
 let context;
 
-// snake head
-let snakeX = blockSize * 5;
-let snakeY = blockSize * 5;
-let velocityX = 0;
-let velocityY = 0;
+//snake head
+let snakeX = blockSize * 9;
+let snakeY = blockSize * 9;
+
+//snake speed
+let speedX = 0;
+let speedY = 0;
 
 //snake body
 let snakeBody = [];
@@ -18,38 +20,39 @@ let snakeBody = [];
 let foodX;
 let foodY;
 
+//display of gameOver
 let gameOver = false;
 
-
-
-//function for when page opens.
+//function for when page opens or refreshes.
 window.onload = function () {
   board = document.getElementById("board");
   board.height = rows * blockSize;
-  board.width = cols * blockSize;
+  board.width = columns * blockSize;
   context = board.getContext("2d");
 
   placeFood();
   document.addEventListener("keydown", changeDirection);
   setInterval(update, 1000 / 10);
-  document.addEventListener('keydown' , playSong)
+  document.addEventListener("keydown", playSong);
 };
 
+//function for changing the direction of snake.
 function changeDirection(e) {
-  if (e.code == "ArrowUp" && velocityY != 1) {
-    velocityX = 0;
-    velocityY = -1;
-  } else if (e.code == "ArrowDown" && velocityY != -1) {
-    velocityX = 0;
-    velocityY = 1;
-  } else if (e.code == "ArrowRight" && velocityX != -1) {
-    velocityX = 1;
-    velocityY = 0;
-  } else if (e.code == "ArrowLeft" && velocityX != 1) {
-    velocityX = -1;
-    velocityY = 0;
+  if (e.code == "ArrowUp" && speedY != 1) {
+    speedX = 0;
+    speedY = -1;
+  } else if (e.code == "ArrowDown" && speedY != -1) {
+    speedX = 0;
+    speedY = 1;
+  } else if (e.code == "ArrowRight" && speedX != -1) {
+    speedX = 1;
+    speedY = 0;
+  } else if (e.code == "ArrowLeft" && speedX != 1) {
+    speedX = -1;
+    speedY = 0;
   }
 }
+
 // styling the board , snake and food
 function update() {
   if (gameOver) {
@@ -75,19 +78,20 @@ function update() {
   }
 
   context.fillStyle = "rgb(159, 241, 255)";
-  snakeX += velocityX * blockSize;
-  snakeY += velocityY * blockSize;
+  snakeX += speedX * blockSize;
+  snakeY += speedY * blockSize;
   context.fillRect(snakeX, snakeY, blockSize, blockSize);
 
   for (let i = 0; i < snakeBody.length; i++) {
     context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
   }
 
+//conditions for gameOver.
   if (
     snakeX < 0 ||
-    snakeX > cols * blockSize ||
+    snakeX >= columns * blockSize ||
     snakeY < 0 ||
-    snakeY > rows * blockSize
+    snakeY >= rows * blockSize
   ) {
     gameOver = true;
     alert("Game Over!");
@@ -101,18 +105,27 @@ function update() {
   }
 }
 
+//function for placing the food in random places.
 function placeFood() {
-  foodX = Math.floor(Math.random() * cols) * blockSize;
+  foodX = Math.floor(Math.random() * columns) * blockSize;
   foodY = Math.floor(Math.random() * rows) * blockSize;
 }
 
+//function for playing song when spaceBar is pressed.
 function playSong(e) {
-    let pinkPantherImg = document.querySelector('#pinkPanther')
+  let pinkPantherImg = document.querySelector("#pinkPanther");
   if (e.code == "Space") {
     if (song.paused) {
-      song.play(), (document.body.style.animationName = "purple" , document.body.style.animationDuration= '2s' , document.body.style.animationIterationCount = 'infinite' , pinkPantherImg.style.display = 'block')
+      song.play(),
+        ((document.body.style.animationName = "purple"),
+        (document.body.style.animationDuration = "2s"),
+        (document.body.style.animationIterationCount = "infinite"),
+        (pinkPantherImg.style.display = "block"));
     } else {
-      song.pause(), (document.body.style.background = "pink" , document.body.style.animation = 'none' , pinkPantherImg.style.display = 'none');
+      song.pause(),
+        ((document.body.style.background = "pink"),
+        (document.body.style.animation = "none"),
+        (pinkPantherImg.style.display = "none"));
     }
   }
 }
